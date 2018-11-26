@@ -10,6 +10,8 @@ import { HomeComponent } from './Home/home.component';
 
 import { AuthCanActivate } from './Auth/auth.can.activate';
 
+import { StorageService } from './Storage/Services/storage.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { AuthCanActivate } from './Auth/auth.can.activate';
     RouterModule.forRoot(routes, {})
   ],
   providers: [
-    AuthCanActivate
+    AuthCanActivate,
+    StorageService
   ],
   bootstrap: [AppComponent]
 })
