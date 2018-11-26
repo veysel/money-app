@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './Login/login.component';
 import { HomeComponent } from './Home/home.component';
 
+import { AuthCanActivate } from './Auth/auth.can.activate';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { HomeComponent } from './Home/home.component';
     BrowserModule,
     RouterModule.forRoot(routes, {})
   ],
-  providers: [],
+  providers: [
+    AuthCanActivate
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
