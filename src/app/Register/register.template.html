@@ -1,5 +1,14 @@
 <div class="container">
     <div class="row mt-5 mx-auto col-xl-4 col-lg-4 col-md-5 col-sm-7 col-11">
-        <button type="submit" class="btn btn-success">Kayıt Ol</button>
+        <small id="codeHelp" class="form-text text-muted">Kayıt olmak için kayıt ol butonuna basmanız yeterli. Sizin
+            adınıza oluşturulmuş bir kod verilecek. Bu kodu kullanarak giriş yapabilirsiniz. Verilen kodu
+            kaybetmeyin.</small>
+    </div>
+    <div class="row mt-5 mx-auto col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <button type="submit" class="btn btn-success col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">Kayıt Ol</button>
+        <a class="float-right" routerLink="/login">Giriş Yap</a>
+    </div>
+    <div class="row mt-5 mx-auto col-xl-4 col-lg-4 col-md-5 col-sm-7 col-11">
+        <b>Yeni Kod : </b> {{newCodeText}}
     </div>
 </div>
