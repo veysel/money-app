@@ -28,4 +28,8 @@ export class MoneyService {
     public createCode() {
         return this._http.post(this.StaticUrl, this.StaticMoneyList);
     }
+
+    public getData(code: string) {
+        return this._http.get(this.StaticUrl + "/" + code);
+    }
 }
