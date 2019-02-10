@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router'
+import { HttpClientModule } from '@angular/common/http';
 
 import { routes } from './app.routes';
 
@@ -12,6 +13,7 @@ import { RegisterComponent } from './Register/register.component';
 import { AuthCanActivate } from './Auth/auth.can.activate';
 
 import { StorageService } from './Storage/Services/storage.service';
+import { MoneyService } from './Common/Service/money.service';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { StorageService } from './Storage/Services/storage.service';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, {})
+    RouterModule.forRoot(routes, {}),
+    HttpClientModule
   ],
   providers: [
     AuthCanActivate,
-    StorageService
+    StorageService,
+    MoneyService
   ],
   bootstrap: [AppComponent]
 })
