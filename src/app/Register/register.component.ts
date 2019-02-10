@@ -23,8 +23,20 @@ export class RegisterComponent {
     this.LoadingComponent = true;
     this.registerState = true;
 
-    this._moneyService.test().subscribe(x => {
-      console.log(x);
+    this._moneyService.createCode().subscribe(res => {
+      this.LoadingComponent = false;
+      this.MainComponent = true;
+
+      if (res) {
+        let tempModel: any = res;
+        let tempText: string = tempModel.uri.replace("https://api.myjson.com/bins/", "");
+
+        this.newCodeText = tempText;
+
+        // For Test
+        console.log(tempText);
+      }
+
     });
   }
 }

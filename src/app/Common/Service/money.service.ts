@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { Http } from '@angular/http';
-
-import 'rxjs/add/operator/map';
-import 'rxjs/Rx';
 import { MoneyModel } from '../Model/money.model';
 
 @Injectable()
@@ -12,7 +9,7 @@ export class MoneyService {
     private StaticMoneyList: Array<MoneyModel>;
 
     constructor(
-        private _http: Http
+        private _http: HttpClient
     ) {
         this.InitStandartMoneyList();
     }
@@ -29,10 +26,6 @@ export class MoneyService {
     }
 
     public createCode() {
-        return this._http.post(this.StaticUrl, this.StaticMoneyList).map(x => x.json());
-    }
-
-    public test() {
-        return this._http.get("https://api.myjson.com/bins/f75hs").map(x => x.json());
+        return this._http.post(this.StaticUrl, this.StaticMoneyList);
     }
 }
