@@ -1,1 +1,56 @@
-Home
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-12 bg-secondary rounded">
+            <h5 class="float-left m-2 text-light">Money App</h5>
+            <button class="float-right btn btn-light m-1">Çıkış</button>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-4">
+            <table class="table table-inverse">
+                <thead class="thead-default">
+                    <tr>
+                        <th>Adı</th>
+                        <th>Adet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of moneyDataList">
+                        <td>{{i.name}}</td>
+                        <td>{{i.count}}</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info" colspan="2">Toplam Para : {{totalMoney | number:'.2'}} TL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-2 w-100"></div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Adet</label>
+                        <input #selectCount type="number" min="0" class="form-control" value="0" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Seçim Yapınız</label>
+                        <select #selectMoney class="form-control">
+                            <option value="{{i.id}}" *ngFor="let i of moneyDataList">{{i.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-success"
+                        (click)="UpdateData(selectMoney.value,selectCount.value,1)">Ekle</button>
+                    <button class="btn btn-danger"
+                        (click)="UpdateData(selectMoney.value,selectCount.value,-1)">Çıkar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
