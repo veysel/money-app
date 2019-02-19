@@ -32,4 +32,8 @@ export class MoneyService {
     public getData(code: string) {
         return this._http.get(this.StaticUrl + "/" + code);
     }
+
+    public updateCode(code: string, list: Array<MoneyModel>) {
+        return this._http.put(this.StaticUrl + "/" + code, list);
+    }
 }

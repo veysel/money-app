@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     this._router.navigate(["/login"]);
   }
 
-  public GetData() {
+  public GetData(): void {
     this._moneyService.getData(this.code).subscribe(response => {
       this.moneyDataList = <any>response;
 
@@ -43,6 +43,45 @@ export class HomeComponent implements OnInit {
       this.moneyDataList.forEach(member => {
         this.totalMoney = this.totalMoney + (member.value * member.count);
       });
+    });
+  }
+
+  public AddData(count: number, id: number): void {
+    if (count < 1)
+      return;
+
+    this.moneyDataList.forEach(member => {
+      if (member.id == id) {
+        member.count = member.count + Number.parseInt(count.toString());
+      }
+    });
+
+    this._moneyService.updateCode(this.code, this.moneyDataList).subscribe(response => {
+      alert("Güncelleme başarılı");
+      this.GetData();
+    });
+  }
+
+  public RemoveData(count: number, id: number): void {
+    if (count < 1)
+      return;
+
+    count = Number.parseInt(count.toString());
+    this.moneyDataList.forEach(member => {
+      if (member.id == id) {
+        if (member.count < count) {
+          alert("Girdiğiniz miktar fazla !");
+          return;
+        }
+        else {
+          member.count = member.count - Number.parseInt(count.toString());
+
+          this._moneyService.updateCode(this.code, this.moneyDataList).subscribe(response => {
+            alert("Güncelleme başarılı");
+            this.GetData();
+          });
+        }
+      }
     });
   }
 

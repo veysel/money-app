@@ -46,9 +46,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <button class="btn btn-success"
-                        (click)="UpdateData(selectMoney.value,selectCount.value,1)">Ekle</button>
+                        (click)="AddData(selectCount.value,selectMoney.value)">Ekle</button>
                     <button class="btn btn-danger"
-                        (click)="UpdateData(selectMoney.value,selectCount.value,-1)">Çıkar</button>
+                        (click)="RemoveData(selectCount.value,selectMoney.value)">Çıkar</button>
                 </div>
             </div>
         </div>
